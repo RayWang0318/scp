@@ -94,7 +94,7 @@ mvn spring-boot:run
 ```bash
 cd secure-comm-demo-client
 # 运行客户端主类，例如：
-mvn exec:java -Dexec.mainClass="cn.pqctech.scp.MyClient"
+mvn exec:java -Dexec.mainClass="com.ray.scp.App"
 ```
 
 > **提示**：详细启动步骤请参考各模块的 `README.md` 或源码注释。
