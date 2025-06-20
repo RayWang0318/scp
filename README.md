@@ -206,7 +206,7 @@ public class ServerApplication {
 ## 联系方式 Contact
 
 如有疑问或建议，请联系
-**QQ: 744429927
+**QQ**: 744429927
 **邮箱**: 744429927@qq.com
 **GitHub**: [https://github.com/RayWang0318/scp](https://github.com/RayWang0318/scp)
 
