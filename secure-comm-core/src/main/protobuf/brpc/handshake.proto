@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package handshake;
+
+option java_package = "com.ray.scp.protocol.brpc.handshake";
+option java_outer_classname = "HandshakeProto";
+
+// ====== 第一步：客户端初始化连接 ======
+message ConnectInitRequest {
+  string sessionId = 1;                  // 会话 ID（客户端生成）
+  bool enableMutualAuth = 2;            // 是否请求启用双向认证
+  bytes cert = 3;                        // 客户端证书（PEM/DER）
+  bytes clientDilithiumPublicKey = 4;   // 客户端 Dilithium 公钥
+}
+
+message ConnectInitResponse {
+  string sessionId = 1;                  // 会话 ID
+  bool enableMutualAuth = 2;            // 服务端是否启用双向认证
+  bytes cert = 3;                        // 服务端证书（如果启用双向认证）
+  int32 success = 4;                     // 状态码（使用 ErrorCode 枚举）
+  bytes serverDilithiumPublicKey = 5;   // 服务端 Dilithium 公钥
+}
+
+// ====== 第二步：客户端验证服务端证书并发送 PQ 公钥 ======
+message PostQuantumKeyRequest {
+  string sessionId = 1;                 // 会话 ID
+  bytes clientKyberPublicKey = 2;       // 客户端 Kyber 公钥
+  bytes signature = 3;                  // Dilithium 签名：[clientPublicKey]
+}
+
+message PostQuantumKeyResponse {
+  string sessionId = 1;                 // 会话 ID
+  bytes ciphertext = 2;                 // 服务端用客户端 Kyber 公钥加密的会话密钥密文
+  bytes signature = 4;                  // Dilithium 签名：[ciphertext + serverPublicKey]
+  int32 success = 5;                    // 状态码（使用 ErrorCode 枚举）
+}
+
+// ====== 第三步：验证共享的 session key 是否一致 ======
+message ChallengeRequest {
+  string sessionId = 1;
+  bytes encryptedChallenge = 2;         // 服务端用 sessionKey 加密的 challenge（如 GCM 加密）
+}
+
+message ChallengeResponse {
+  string sessionId = 1;
+  bytes decryptedChallenge = 2;         // 客户端解密后的明文 challenge
+  int32 success = 3;                    // 状态码（使用 ErrorCode 枚举）
+}
+
+// ====== 服务定义 ======
+service Handshake {
+  // 第一步：客户端初始化握手，发送证书和 Dilithium 公钥
+  rpc ConnectInit(ConnectInitRequest) returns (ConnectInitResponse);
+
+  // 第二步：客户端发送 Kyber 公钥，服务端返回加密密钥密文
+  rpc ExchangePostQuantumKey(PostQuantumKeyRequest) returns (PostQuantumKeyResponse);
+
+  // 第三步：服务端发送 challenge，客户端解密并回应，确认双方 sessionKey 一致
+  rpc VerifyChallenge(ChallengeRequest) returns (ChallengeResponse);
+}

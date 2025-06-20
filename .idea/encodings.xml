@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/secure-comm-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-auth/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-client-brpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-client-brpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-client-grpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-client-grpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-client-websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-client-websocket/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-demo-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-demo-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-demo-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-demo-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-sdk-grpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-sdk-grpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-sdk-websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-sdk-websocket/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-sdk/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-sdk/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-server-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-server-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-session/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-session/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-transport-brpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-transport-brpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-transport-grpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-transport-grpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-transport-websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/secure-comm-transport-websocket/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sercure-comm-transport-websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sercure-comm-transport-websocket/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

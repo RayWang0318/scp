@@ -1,0 +1,25 @@
+syntax = "proto3";
+package data;
+
+option java_package = "com.ray.scp.protocol.brpc.data";
+option java_outer_classname = "DataTransferProto";
+
+// 定义加密请求的数据结构
+message EncryptedDataRequest {
+  string sessionId = 1;
+  string serviceName = 2; // 用于标识目标服务名称或接口
+  bytes payload = 3;     // 数字信封 (请求的加密内容)
+}
+
+// 定义加密响应的数据结构
+message EncryptedDataResponse {
+  string sessionId = 1;
+  bytes payload = 2; // 数字信封 (响应的加密内容)
+  int32 success = 3;
+}
+
+// 安全通道服务
+service SecureChannel {
+  // 发送加密数据请求，并接收加密数据响应
+  rpc SendEncrypted(EncryptedDataRequest) returns (EncryptedDataResponse);
+}

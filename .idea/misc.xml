@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/secure-comm-auth/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-client-brpc/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-client-grpc/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-client-websocket/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-sdk-grpc/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-sdk-websocket/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-sdk/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-session/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-transport-brpc/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-transport-grpc/pom.xml" />
+        <option value="$PROJECT_DIR$/secure-comm-transport-websocket/pom.xml" />
+        <option value="$PROJECT_DIR$/sercure-comm-transport-websocket/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="azul-1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
