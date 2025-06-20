@@ -31,6 +31,14 @@
 
 ---
 
+## 握手流程 Handshake Flow
+
+下图展示了安全通信协议的握手流程，双方通过后量子算法 Kyber 交换密钥，并使用数字信封保护会话密钥，完成安全会话建立。
+
+![握手流程](docs/握手流程.png)
+
+---
+
 ## 项目结构 Project Structure
 
 ```
@@ -184,8 +192,9 @@ public class ServerApplication {
 
 ## 联系方式 Contact
 
-如有疑问或建议，请联系：  
-**邮箱**: your-email@example.com  
+如有疑问或建议，请联系
+**QQ: 744429927
+**邮箱**: 744429927@qq.com
 **GitHub**: [https://github.com/RayWang0318/scp](https://github.com/RayWang0318/scp)
 
 ---
