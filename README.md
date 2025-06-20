@@ -106,35 +106,44 @@ mvn exec:java -Dexec.mainClass="cn.pqctech.scp.MyClient"
 ### 客户端示例（bRPC）
 
 ```java
-package cn.pqctech.scp;
+package com.ray.scp;
 
-import brpc.protocol.com.ray.scp.ScpBrpcClient;
-import config.brpc.protocol.com.ray.scp.BrpcClientConfiguration;
+import com.ray.scp.protocol.brpc.ScpBrpcClient;
+import com.ray.scp.protocol.brpc.config.BrpcClientConfiguration;
+import com.ray.scp.sdk.impl.PqcSdkClientProvider;
 
 import java.nio.charset.StandardCharsets;
 
-public class MyClient {
-    public static void main(String[] args) {
-        BrpcClientConfiguration.Builder builder = BrpcClientConfiguration.builder();
-        builder.rootCert(null);             // CA 根证书
-        builder.deviceCert(null);           // 设备证书
-        builder.enableMutualAuth(false);    // 是否启用双向认证
-        BrpcClientConfiguration configuration = builder.build();
-
-        ScpBrpcClient client = new ScpBrpcClient("127.0.0.1", 8000, configuration);
-        try {
-            if (client.initClient()) {
-                String response = client.sendSecureMessage(
-                    "impl.test.demo.com.ray.scp.TestServiceImpl",
-                    "hello world!".getBytes(StandardCharsets.UTF_8),
-                    String.class);
-                System.out.println("服务端响应: " + response);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+/**
+ * Hello world!
+ *
+ */
+public class App
+{
+  public static void main(String[] args) {
+    BrpcClientConfiguration.Builder builder = BrpcClientConfiguration.builder();
+    // ca根证书
+    builder.rootCert(null);
+    // 设备证书
+    builder.deviceCert(null);
+    // 双向认证
+    builder.enableMutualAuth(false);
+    builder.pqcSdk(new PqcSdkClientProvider());
+    BrpcClientConfiguration configuration = builder.build();
+    ScpBrpcClient scpBrpcClient = new ScpBrpcClient("127.0.0.1", 8000, configuration);
+    try {
+      boolean b = scpBrpcClient.initClient();
+      if (b) {
+        // 需要发送的服务完整名称 example: cn.pqctech.scp.context.ScpService
+        String response = scpBrpcClient.sendSecureMessage("com.ray.scp.demo.test.impl.TestServiceImpl", "hello world!".getBytes(StandardCharsets.UTF_8), String.class);
+        System.out.println(response);
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
+  }
 }
+
 ```
 
 ---
@@ -142,33 +151,37 @@ public class MyClient {
 ### 服务端示例（bRPC）
 
 ```java
-package cn.pqctech.scp.demo;
+package com.ray.scp.demo;
 
-import brpc.protocol.com.ray.scp.ScpBrpcServer;
-import config.brpc.protocol.com.ray.scp.BrpcServerConfiguration;
+import com.ray.scp.protocol.brpc.ScpBrpcServer;
+import com.ray.scp.protocol.brpc.config.BrpcServerConfiguration;
+import com.ray.scp.sdk.impl.PqcSdkClientProvider;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "cn.pqctech.scp.demo")
+@SpringBootApplication(scanBasePackages = "com.ray.scp.demo")
 public class ServerApplication {
 
-    public static void main(String[] args) {
-        org.springframework.boot.SpringApplication.run(ServerApplication.class, args);
-        startScpServer();
-    }
+  public static void main(String[] args) {
+    org.springframework.boot.SpringApplication.run(ServerApplication.class, args);
+    startScpServer();
+  }
 
-    private static void startScpServer() {
-        BrpcServerConfiguration.Builder builder = new BrpcServerConfiguration.Builder();
-        builder.enableMutualAuth(false);     // 是否启用双向认证
-        builder.rootCert(null);               // CA 根证书
-        builder.deviceCert(null);             // 设备证书
-        builder.serviceScanPath("cn.pqctech.scp.demo");
-        BrpcServerConfiguration configuration = builder.build();
-
-        ScpBrpcServer scpServer = new ScpBrpcServer(8000, configuration);
-        scpServer.start();
-        System.out.println("安全通信服务启动成功，监听端口：8000");
-    }
+  private static void startScpServer(){
+    BrpcServerConfiguration.Builder builder = new BrpcServerConfiguration.Builder();
+    // 双向认证
+    builder.enableMutualAuth(false);
+    // ca根证书
+    builder.rootCert(null);
+    // 设备证书
+    builder.deviceCert(null);
+    builder.serviceScanPath("com.ray.scp.demo");
+    builder.pqcSdk(new PqcSdkClientProvider());
+    BrpcServerConfiguration configuration = builder.build();
+    ScpBrpcServer scpServer = new ScpBrpcServer(8000, configuration);
+    scpServer.start();
+  }
 }
+
 ```
 
 ---
